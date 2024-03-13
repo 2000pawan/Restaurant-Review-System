@@ -8,8 +8,8 @@ import re
 
 # Load Model & CountVectorizer using jonlib
   
-model=joblib.load('model.pkl')
-cv=joblib.load('cv.pkl')
+model=joblib.load('model.joblib')
+cv=joblib.load('cv.joblib')
 
 # Import Image Using Pillow Modoule.
 image=Image.open('img.jpg')
