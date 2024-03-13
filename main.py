@@ -48,7 +48,7 @@ def cleaning_dataset(doc):
     new_doc=''
     for word in doc:
         if word not in spwords:
-            new_doc=new_doc+word+'
+            new_doc=new_doc+word+' '
     return new_doc.strip() 
 def prediction(corpus):
     corpus_new=list(map(cleaning_dataset,corpus))
