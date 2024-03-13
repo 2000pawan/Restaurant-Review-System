@@ -2,7 +2,9 @@
 import pickle
 import streamlit as st
 from PIL import Image
-import package.cleaning as clean
+from sklearn.feature_extraction.text import ENGLISH_STOP_WORDS
+import re
+
 
 # Load Model & CountVectorizer using Pickle
 pickle_in1 = open('model.pkl', 'rb')   
@@ -35,10 +37,22 @@ def main():
      '''.format(result)
     st.markdown(temp,unsafe_allow_html=True)
     
-# Prediction Function to predict from model.   
+# Prediction Function to predict from model.
+spwords=list(ENGLISH_STOP_WORDS)
+spwords.remove('not')
+spwords.remove('no')  
+def cleaning_dataset(doc):
+    doc=doc.lower()
+    doc=re.sub('[^a-z ]','',doc)
+    doc=doc.split()
+    new_doc=''
+    for word in doc:
+        if word not in spwords:
+            new_doc=new_doc+word+'
+    return new_doc.strip() 
 def prediction(corpus):
-    corpus_new=clean.cleaning_dataset(corpus)
-    X_test=cv.transform([corpus_new]).toarray()
+    corpus_new=list(map(cleaning_dataset,corpus))
+    X_test=cv.transform(corpus_new).toarray()
     prediction=model.predict(X_test)
     if prediction==0:
         return 'You Do Not Liked This Restaurant. Thanks For Visit🙏🏼🙏🏼🙏🏼'
