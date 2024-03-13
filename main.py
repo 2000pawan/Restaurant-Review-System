@@ -1,13 +1,15 @@
 # Import Important Library.
-import joblib
+import pickle
 import streamlit as st
 from PIL import Image
 from sklearn.feature_extraction.text import ENGLISH_STOP_WORDS
 import re
 
-# Load Model & CountVectorizer using Joblib
-model=joblib.load('model.pkl')
-cv=joblib.load('cv.pkl')
+# Load Model & CountVectorizer using Pickle
+pickle_in1 = open('model.pkl', 'rb')   
+model=pickle.load(pickle_in1)
+pickle1 = open('cv.pkl', 'rb') 
+cv=pickle.load(pickle1)
 
 # StopWords
 spwords=list(ENGLISH_STOP_WORDS)
