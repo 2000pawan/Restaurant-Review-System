@@ -10,6 +10,7 @@ model=pickle.load(pickle_in1)
 pickle1 = open('cv.pkl', 'rb') 
 cv=pickle.load(pickle1)
 
+
 # Import Image Using Pillow Modoule.
 image=Image.open('img.jpg')
 
