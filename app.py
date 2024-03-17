@@ -29,7 +29,7 @@ image=Image.open('img.jpg')
 
 # Streamlit Function For Building Button and app.
 def main():
-    st.image(image,width=900)
+    st.image(image,width=650)
     st.title('Restaurant Reviews Analysis')
     html_temp='''
     <div style='background-color:red; padding:16px'>
